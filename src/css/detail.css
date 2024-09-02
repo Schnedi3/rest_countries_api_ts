@@ -1,0 +1,136 @@
+/* COUNTRY DETAIL */
+.countrydetail {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* BUTTON */
+.countrydetail > button {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-text);
+  font-family: Raleway;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.3rem 3rem 0.3rem 1.5rem;
+  border: 0;
+  border-radius: 0.3rem;
+  background-color: var(--clear-bg);
+  box-shadow: 0 3px 2px 0 var(--shadow);
+}
+
+.countrydetail > button > img {
+  width: 2rem;
+  filter: var(--filter);
+}
+
+/* DETAILS */
+.countrydetail > article {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.countrydetail > article > img {
+  width: 45%;
+  border-radius: 1rem;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.details > h2 {
+  font-family: Raleway;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--dark-text);
+}
+
+.details > section {
+  display: flex;
+  gap: 9rem;
+}
+
+.details > section > article > p {
+  font-size: 0.9rem;
+  color: var(--clear-text);
+}
+
+.details > section > article > p > span {
+  font-family: Raleway;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.details > div {
+  display: flex;
+  gap: 1rem;
+}
+
+.details > div > p {
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.details > div > ul {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.details > div > ul > li {
+  list-style-type: none;
+  padding: 0 0.5rem;
+  border-radius: 0.3rem;
+  color: var(--clear-text);
+  background-color: var(--clear-bg);
+  box-shadow: 0 2px 1px 0 var(--shadow);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .countrydetail > button:hover {
+    filter: brightness(93%);
+    cursor: pointer;
+  }
+
+  .details > div > ul > li:hover {
+    filter: brightness(93%);
+    cursor: pointer;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 1000px) {
+  .details > section {
+    gap: 5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .countrydetail > article {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .countrydetail > article > img {
+    width: 100%;
+  }
+
+  .details > section {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .details > div {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}

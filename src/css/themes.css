@@ -1,0 +1,23 @@
+/* Light */
+.theme-light {
+  --main-bg: rgb(241, 241, 241);
+  --clear-bg: rgb(255, 255, 255);
+  --dark-text: rgb(51, 63, 87);
+  --clear-text: rgb(58, 74, 89);
+  --shadow: rgba(0, 0, 0, 0.4);
+  --filter: brightness(0) saturate(100%) invert(18%) sepia(4%) saturate(5582%)
+    hue-rotate(168deg) brightness(108%) contrast(72%);
+  --accent: rgb(168, 118, 255);
+}
+
+/* Dark */
+.theme-dark {
+  --main-bg: rgb(34, 43, 47);
+  --clear-bg: rgb(43, 57, 69);
+  --dark-text: rgb(233, 233, 233);
+  --clear-text: rgb(215, 215, 215);
+  --shadow: rgba(225, 225, 225, 0.2);
+  --filter: brightness(0) saturate(100%) invert(71%) sepia(0%) saturate(2885%)
+    hue-rotate(10deg) brightness(119%) contrast(89%);
+  --accent: rgb(198, 166, 255);
+}
