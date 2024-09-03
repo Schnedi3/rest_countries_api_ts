@@ -8,12 +8,14 @@ import "../css/detail.css";
 export const Detail = () => {
   const { countries, selectedCountry, setSelectedCountry } =
     useCountriesContext();
-  const navigate = useNavigate();
 
+  // navigate to home
+  const navigate = useNavigate();
   const handleReturn = () => {
     navigate("/");
   };
 
+  // border countries navigation
   const handleGoTo = (border: string) => {
     const foundCountry = countries.find((country) => country.cca3 === border);
 
@@ -43,11 +45,12 @@ export const Detail = () => {
           <img src={iconBack} alt="back to homepage" />
           Back
         </button>
-        <p>No country selected. Please go back and select a country</p>
+        <p>No country selected. Please go back and select one</p>
       </section>
     );
   }
 
+  // destruture the country properties
   const {
     flags,
     name,

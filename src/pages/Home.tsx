@@ -10,7 +10,7 @@ export const Home = () => {
   const { loading, error } = useFetchCountries();
   const { setSelectedCountry, filteredCountries } = useCountriesContext();
 
-  // navigate to home
+  // navigate to country page
   const navigate = useNavigate();
   const handleClick = (country: ICountry) => {
     setSelectedCountry(country);
