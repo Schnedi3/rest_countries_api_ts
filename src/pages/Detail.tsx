@@ -24,6 +24,19 @@ export const Detail = () => {
     );
   }
 
+  const {
+    flags,
+    name,
+    population,
+    region,
+    subregion,
+    capital,
+    tld,
+    currencies,
+    languages,
+    borders,
+  } = selectedCountry;
+
   return (
     <section className="countrydetail">
       <button onClick={handleReturn}>
@@ -31,19 +44,16 @@ export const Detail = () => {
         Back
       </button>
       <article>
-        <img
-          src={selectedCountry.flags.svg}
-          alt={`${selectedCountry.name.common} flag`}
-        />
+        <img src={flags.svg} alt={`${name.common} flag`} />
 
         <aside className="details">
-          <h2>{selectedCountry.name.common}</h2>
+          <h2>{name.common}</h2>
 
           <section>
             <article>
               <p>
                 <span>Native name:</span>{" "}
-                {Object.values(selectedCountry.name.nativeName)
+                {Object.values(name.nativeName)
                   .map((native) => native.common)
                   .join(", ")}
               </p>
@@ -51,38 +61,39 @@ export const Detail = () => {
                 <span>Population:</span> {population.toLocaleString()}
               </p>
               <p>
-                <span>Region:</span> {selectedCountry.region}
+                <span>Region:</span> {region}
               </p>
               <p>
-                <span>Sub Region:</span> {selectedCountry.subregion}
+                <span>Sub Region:</span> {subregion}
               </p>
               <p>
-                <span>Capital:</span> {selectedCountry.capital.join(", ")}
+                <span>Capital:</span> {capital.join(", ")}
               </p>
             </article>
             <article>
               <p>
-                <span>Top Level Domain:</span> {selectedCountry.tld}
+                <span>Top Level Domain:</span> {tld}
               </p>
               <p>
                 <span>Currencies:</span>{" "}
-                {Object.values(selectedCountry.currencies)
+                {Object.values(currencies)
                   .map((currency) => currency.name)
                   .join(", ")}
               </p>
               <p>
-                <span>Languages:</span>{" "}
-                {Object.values(selectedCountry.languages).join(", ")}
+                <span>Languages:</span> {Object.values(languages).join(", ")}
               </p>
             </article>
           </section>
 
-          {selectedCountry.borders && (
+          {borders && (
             <div>
               <p>Border Countries:</p>
               <ul>
-                {selectedCountry.borders.map((border, index) => (
-                  <li key={index}>{border}</li>
+                {borders.map((border, index) => (
+                  <li key={index} onClick={() => handleGoTo(border)}>
+                    {border}
+                  </li>
                 ))}
               </ul>
             </div>
