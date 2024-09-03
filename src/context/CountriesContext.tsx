@@ -72,6 +72,7 @@ export const CountriesProvider = ({ children }: PropsWithChildren) => {
   return (
     <CountriesContext.Provider
       value={{
+        countries,
         setCountries,
         selectedCountry,
         setSelectedCountry,

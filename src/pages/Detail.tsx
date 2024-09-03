@@ -5,11 +5,21 @@ import { iconBack } from "../UIIcons";
 import "../css/detail.css";
 
 export const Detail = () => {
-  const { selectedCountry } = useCountriesContext();
+  const { countries, selectedCountry, setSelectedCountry } =
+    useCountriesContext();
   const navigate = useNavigate();
 
   const handleReturn = () => {
     navigate("/");
+  };
+
+  const handleGoTo = (border: string) => {
+    const foundCountry = countries.find((country) => country.cca3 === border);
+
+    if (foundCountry) {
+      setSelectedCountry(foundCountry);
+      navigate(`/country/${border}`);
+    }
   };
 
   if (!selectedCountry) {

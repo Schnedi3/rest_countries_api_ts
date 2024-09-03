@@ -90,6 +90,7 @@ export interface ICountry {
 }
 
 export interface CountriesContextType {
+  countries: ICountry[];
   setCountries: (countries: ICountry[]) => void;
   selectedCountry: ICountry | undefined;
   setSelectedCountry: (selectedCountry: ICountry) => void;
