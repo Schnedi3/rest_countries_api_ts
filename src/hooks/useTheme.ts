@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 
 export const useTheme = () => {
-  const [theme, setTheme] = useState("theme-light");
+  const getDefaultTheme = () => {
+    const prefersDarkTheme = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    return prefersDarkTheme ? "theme-dark" : "theme-light";
+  };
+
+  const [theme, setTheme] = useState(getDefaultTheme);
 
   useEffect(() => {
     document.body.className = theme;
