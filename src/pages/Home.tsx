@@ -14,7 +14,7 @@ export const Home = () => {
   const navigate = useNavigate();
   const handleClick = (country: ICountry) => {
     setSelectedCountry(country);
-    navigate(`/country/${country.name.common}`);
+    navigate(`/country/${country.cca3}`);
   };
 
   if (loading) return <p>Loading...</p>;
