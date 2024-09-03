@@ -1,7 +1,7 @@
 /* COUNTRIES LIST */
 .countrylist > ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
   gap: 3rem;
   margin-bottom: 3rem;
 }
@@ -10,6 +10,7 @@
 .country {
   list-style-type: none;
   display: grid;
+  transition: 0.2s;
 }
 
 .country > figure {
@@ -23,6 +24,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 0.5rem 0.5rem 0 0;
+  transition: 0.3s;
 }
 
 .country_info {
@@ -38,10 +40,11 @@
 
 .country_info > h3 {
   margin-bottom: 0.5rem;
-  font-family: Raleway;
-  font-weight: 900;
-  font-size: 1.2rem;
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 1.3rem;
   color: var(--dark-text);
+  letter-spacing: 0.5px;
 }
 
 .country_info > p {
@@ -50,22 +53,25 @@
 }
 
 .country_info > p > span {
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--dark-text);
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .dropdown > button:hover {
+  .country:hover {
+    transform: scale(1.02);
+  }
+
+  .country > figure:hover,
+  .country_info:hover {
+    box-shadow: 0 4px 0 0 var(--accent);
     cursor: pointer;
   }
 
-  .dropdown > ul > li:hover {
-    color: var(--accent);
+  .country > figure:hover + .country_info {
     cursor: pointer;
-  }
-
-  .country > figure > img:hover {
-    cursor: pointer;
+    box-shadow: 0 4px 0 0 var(--accent);
   }
 }
 

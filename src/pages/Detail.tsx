@@ -118,7 +118,7 @@ export const Detail = () => {
               <p>Border Countries:</p>
               <ul>
                 {borders.map((border, index) => (
-                  <li key={index} onClick={() => handleGoTo(border)}>
+                  <li className="border" key={index} onClick={() => handleGoTo(border)}>
                     {border}
                   </li>
                 ))}

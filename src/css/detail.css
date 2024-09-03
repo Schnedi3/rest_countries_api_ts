@@ -20,7 +20,7 @@
   border: 0;
   border-radius: 0.3rem;
   background-color: var(--clear-bg);
-  box-shadow: 0 3px 2px 0 var(--shadow);
+  box-shadow: 0 3px 0 0 var(--shadow);
 }
 
 .countrydetail > button > img {
@@ -67,6 +67,7 @@
   font-family: Raleway;
   font-weight: 700;
   font-size: 0.9rem;
+  color: var(--dark-text);
 }
 
 .details > div {
@@ -82,27 +83,23 @@
 .details > div > ul {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-.details > div > ul > li {
+.border {
   list-style-type: none;
-  padding: 0 0.5rem;
-  border-radius: 0.3rem;
+  padding: 0 0.7rem;
+  border-radius: 0.2rem;
   color: var(--clear-text);
   background-color: var(--clear-bg);
-  box-shadow: 0 2px 1px 0 var(--shadow);
+  box-shadow: 0 3px 0 0 var(--shadow);
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .countrydetail > button:hover {
-    filter: brightness(93%);
-    cursor: pointer;
-  }
-
-  .details > div > ul > li:hover {
-    filter: brightness(93%);
+  .countrydetail > button:hover,
+  .border:hover {
+    box-shadow: 0 3px 0 0 var(--accent);
     cursor: pointer;
   }
 }
