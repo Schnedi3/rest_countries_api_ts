@@ -10,8 +10,11 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 - Toggle the color scheme between light and dark mode
 
 ## Screenshots
-<!-- <img src="./screenshots/desktop_design.png">
-<img src="./screenshots/mobile_design.png"> -->
+<img src="./screenshots/desktop_dark.jpg">
+<img src="./screenshots/desktop_light.jpg">
+
+<img src="./screenshots/mobile_dark.png">
+<img src="./screenshots/mobile_light.png">
 
 ## Built with
 - React
