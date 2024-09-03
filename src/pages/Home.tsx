@@ -37,7 +37,7 @@ export const Home = () => {
             <div className="country_info">
               <h3>{country.name.common}</h3>
               <p>
-                <span>Population:</span> {country.population}
+                <span>Population:</span> {country.population.toLocaleString()}
               </p>
               <p>
                 <span>Region:</span> {country.region}

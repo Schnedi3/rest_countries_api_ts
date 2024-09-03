@@ -48,7 +48,7 @@ export const Detail = () => {
                   .join(", ")}
               </p>
               <p>
-                <span>Population:</span> {selectedCountry.population}
+                <span>Population:</span> {population.toLocaleString()}
               </p>
               <p>
                 <span>Region:</span> {selectedCountry.region}
