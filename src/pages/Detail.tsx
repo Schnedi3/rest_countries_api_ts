@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useCountriesContext } from "../context/useCountriesContext";
@@ -21,6 +22,19 @@ export const Detail = () => {
       navigate(`/country/${border}`);
     }
   };
+
+  useEffect(() => {
+    if (selectedCountry) {
+      localStorage.setItem("selectedCountry", JSON.stringify(selectedCountry));
+    }
+  }, [selectedCountry]);
+
+  useEffect(() => {
+    const savedCountry = localStorage.getItem("selectedCountry");
+    if (savedCountry) {
+      setSelectedCountry(JSON.parse(savedCountry));
+    }
+  }, [setSelectedCountry]);
 
   if (!selectedCountry) {
     return (
