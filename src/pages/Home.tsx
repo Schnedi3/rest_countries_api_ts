@@ -5,6 +5,7 @@ import { useFetchCountries } from "../hooks/useFetch";
 import { ICountry } from "../types/types";
 import { Search } from "../components/Search";
 import { HomeSkeleton } from "../skeletons/HomeSkeleton";
+
 import "../css/home.css";
 
 export const Home = () => {
@@ -27,12 +28,15 @@ export const Home = () => {
 
       <ul>
         {filteredCountries.map((country, index) => (
-          <li className="country" key={index}>
+          <li
+            className="country"
+            key={index}
+            onClick={() => handleClick(country)}
+          >
             <figure>
               <img
                 src={country.flags.svg}
                 alt={`${country.name.common} flag`}
-                onClick={() => handleClick(country)}
               />
             </figure>
             <div className="country_info">

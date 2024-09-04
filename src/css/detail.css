@@ -15,12 +15,12 @@
   color: var(--dark-text);
   font-family: Raleway;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   padding: 0.3rem 3rem 0.3rem 1.5rem;
   border: 0;
   border-radius: 0.3rem;
   background-color: var(--clear-bg);
-  box-shadow: 0 3px 0 0 var(--shadow);
+  box-shadow: 0 2px 0 0 var(--shadow);
 }
 
 .countrydetail > button > img {
@@ -92,14 +92,14 @@
   border-radius: 0.2rem;
   color: var(--clear-text);
   background-color: var(--clear-bg);
-  box-shadow: 0 3px 0 0 var(--shadow);
+  box-shadow: 0 2px 0 0 var(--shadow);
 }
 
 /* HOVER */
 @media (hover: hover) {
   .countrydetail > button:hover,
   .border:hover {
-    box-shadow: 0 3px 0 0 var(--accent);
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 }

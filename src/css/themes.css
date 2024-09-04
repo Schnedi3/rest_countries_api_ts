@@ -8,6 +8,7 @@
   --filter: brightness(0) saturate(100%) invert(18%) sepia(4%) saturate(5582%)
     hue-rotate(168deg) brightness(108%) contrast(72%);
   --accent: rgb(168, 118, 255);
+  --accent-pale: rgb(243, 236, 255);
 }
 
 /* Dark */
@@ -20,4 +21,5 @@
   --filter: brightness(0) saturate(100%) invert(71%) sepia(0%) saturate(2885%)
     hue-rotate(10deg) brightness(119%) contrast(89%);
   --accent: rgb(198, 166, 255);
+  --accent-pale: rgb(79, 68, 97);
 }

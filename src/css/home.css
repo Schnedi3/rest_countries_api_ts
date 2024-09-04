@@ -35,7 +35,7 @@
   justify-content: center;
   background-color: var(--clear-bg);
   border-radius: 0 0 0.5rem 0.5rem;
-  box-shadow: 0 4px 0 0 var(--shadow);
+  box-shadow: 0 2px 0 0 var(--shadow);
 }
 
 .country_info > h3 {
@@ -61,17 +61,12 @@
 @media (hover: hover) {
   .country:hover {
     transform: scale(1.02);
+    cursor: pointer;
   }
 
-  .country > figure:hover,
+  .country > figure:hover + .country_info,
   .country_info:hover {
-    box-shadow: 0 4px 0 0 var(--accent);
-    cursor: pointer;
-  }
-
-  .country > figure:hover + .country_info {
-    cursor: pointer;
-    box-shadow: 0 4px 0 0 var(--accent);
+    box-shadow: 0 2px 0 0 var(--accent);
   }
 }
 
