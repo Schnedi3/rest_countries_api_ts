@@ -4,6 +4,7 @@ import { useCountriesContext } from "../context/useCountriesContext";
 import { useFetchCountries } from "../hooks/useFetch";
 import { ICountry } from "../types/types";
 import { Search } from "../components/Search";
+import { HomeSkeleton } from "../skeletons/HomeSkeleton";
 import "../css/home.css";
 
 export const Home = () => {
@@ -17,7 +18,7 @@ export const Home = () => {
     navigate(`/country/${country.cca3}`);
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <HomeSkeleton />;
   if (error) return <p>{error}</p>;
 
   return (

@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useCountriesContext } from "../context/useCountriesContext";
 import { iconBack } from "../UIIcons";
 import "../css/detail.css";
+
+import { DetailSkeleton } from "../skeletons/Detailskeleton";
 
 export const Detail = () => {
   const { countries, selectedCountry, setSelectedCountry } =
@@ -25,9 +27,12 @@ export const Detail = () => {
     }
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     if (selectedCountry) {
       localStorage.setItem("selectedCountry", JSON.stringify(selectedCountry));
+      setIsLoading(false);
     }
   }, [selectedCountry]);
 
@@ -38,16 +43,12 @@ export const Detail = () => {
     }
   }, [setSelectedCountry]);
 
+  if (isLoading) {
+    return <DetailSkeleton />;
+  }
+
   if (!selectedCountry) {
-    return (
-      <section className="countrydetail">
-        <button onClick={handleReturn}>
-          <img src={iconBack} alt="back to homepage" />
-          Back
-        </button>
-        <p>No country selected. Please go back and select one</p>
-      </section>
-    );
+    return <DetailSkeleton />;
   }
 
   // destruture the country properties
@@ -118,7 +119,11 @@ export const Detail = () => {
               <p>Border Countries:</p>
               <ul>
                 {borders.map((border, index) => (
-                  <li className="border" key={index} onClick={() => handleGoTo(border)}>
+                  <li
+                    className="border"
+                    key={index}
+                    onClick={() => handleGoTo(border)}
+                  >
                     {border}
                   </li>
                 ))}

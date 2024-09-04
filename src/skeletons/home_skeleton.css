@@ -1,0 +1,71 @@
+.skeleton_card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.skeleton_card > ul {
+  list-style-type: none;
+  display: grid;
+}
+
+.skeleton_card > ul > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton_card > ul > li > img {
+  width: 100%;
+  height: 10rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.skeleton_card > ul > li > div > h3 {
+  width: 100%;
+  height: 1.8rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.4rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.skeleton_card > ul > li > div > p {
+  width: 80%;
+  height: 1rem;
+  margin-bottom: 0.3rem;
+  border-radius: 0.3rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.skeleton_card > ul > li > div {
+  height: 10rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--clear-bg);
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-shadow: 0 4px 0 0 var(--shadow);
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .skeleton_card > ul {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+/* ANIMATION */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
