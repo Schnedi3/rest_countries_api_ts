@@ -93,6 +93,7 @@
   color: var(--clear-text);
   background-color: var(--clear-bg);
   box-shadow: 0 2px 0 0 var(--shadow);
+  text-decoration: none;
 }
 
 /* HOVER */

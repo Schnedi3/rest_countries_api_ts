@@ -83,9 +83,13 @@ export const Detail = () => {
               <p>Border Countries:</p>
               <ul>
                 {borders.map((border, index) => (
-                  <li className="border" key={index}>
-                    {border}
-                  </li>
+                  <Link
+                    to={`/country/${border}`}
+                    key={index}
+                    className="border"
+                  >
+                    <li>{border}</li>
+                  </Link>
                 ))}
               </ul>
             </div>
