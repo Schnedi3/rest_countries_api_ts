@@ -83,6 +83,7 @@
 .details > div > ul {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -107,8 +108,13 @@
 
 /* MOBILE */
 @media (max-width: 1000px) {
+  .country_detail > article > img {
+    width: 75%;
+  }
+
   .details > section {
-    gap: 5rem;
+    flex-direction: column;
+    gap: 2rem;
   }
 }
 

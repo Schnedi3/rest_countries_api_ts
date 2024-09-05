@@ -7,11 +7,11 @@ import { iconBack } from "../UIIcons";
 import "../css/detail.css";
 
 export const Detail = () => {
-  const { country, loading, error } = useFetchCountry();
+  const { fetchedCountry, loading, error } = useFetchCountry();
 
   if (loading) return <DetailSkeleton />;
   if (error) return <p>{error}</p>;
-  if (!country) return <DetailSkeleton />;
+  if (!fetchedCountry) return <DetailSkeleton />;
 
   // destruture the country properties
   const {
@@ -25,7 +25,7 @@ export const Detail = () => {
     currencies,
     languages,
     borders,
-  } = country;
+  } = fetchedCountry;
 
   return (
     <section className="country_detail">
@@ -43,38 +43,50 @@ export const Detail = () => {
 
           <section>
             <article>
-              <p>
-                <span>Native name:</span>{" "}
-                {Object.values(name.nativeName)
-                  .map((native) => native.common)
-                  .join(", ")}
-              </p>
+              {name.nativeName && (
+                <p>
+                  <span>Native name:</span>{" "}
+                  {Object.values(name.nativeName)
+                    .map((native) => native.common)
+                    .join(", ")}
+                </p>
+              )}
               <p>
                 <span>Population:</span> {population.toLocaleString()}
               </p>
               <p>
                 <span>Region:</span> {region}
               </p>
-              <p>
-                <span>Sub Region:</span> {subregion}
-              </p>
-              <p>
-                <span>Capital:</span> {capital.join(", ")}
-              </p>
+              {subregion && (
+                <p>
+                  <span>Sub Region:</span> {subregion}
+                </p>
+              )}
+              {capital && (
+                <p>
+                  <span>Capital:</span> {capital.join(", ")}
+                </p>
+              )}
             </article>
             <article>
-              <p>
-                <span>Top Level Domain:</span> {tld}
-              </p>
-              <p>
-                <span>Currencies:</span>{" "}
-                {Object.values(currencies)
-                  .map((currency) => currency.name)
-                  .join(", ")}
-              </p>
-              <p>
-                <span>Languages:</span> {Object.values(languages).join(", ")}
-              </p>
+              {tld && (
+                <p>
+                  <span>Top Level Domain:</span> {tld}
+                </p>
+              )}
+              {currencies && (
+                <p>
+                  <span>Currencies:</span>{" "}
+                  {Object.values(currencies)
+                    .map((currency) => currency.name)
+                    .join(", ")}
+                </p>
+              )}
+              {languages && (
+                <p>
+                  <span>Languages:</span> {Object.values(languages).join(", ")}
+                </p>
+              )}
             </article>
           </section>
 

@@ -6,7 +6,7 @@
   margin-bottom: 3rem;
 }
 
-.country_list > ul > a {
+.country_list > ul > li > a {
   text-decoration: none;
 }
 
@@ -17,13 +17,13 @@
   transition: 0.2s;
 }
 
-.country > figure {
+.country > a > figure {
   width: 100%;
   height: 10rem;
   overflow: hidden;
 }
 
-.country > figure > img {
+.country > a > figure > img {
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -20,8 +20,8 @@ export const Home = () => {
 
       <ul>
         {filteredCountries.map((country, index) => (
-          <Link to={`/country/${country.cca3}`} key={index}>
-            <li className="country">
+          <li className="country" key={index}>
+            <Link to={`/country/${country.cca3}`}>
               <figure>
                 <img
                   src={country.flags.svg}
@@ -42,8 +42,8 @@ export const Home = () => {
                   </p>
                 )}
               </div>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </section>

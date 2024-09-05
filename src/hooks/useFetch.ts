@@ -31,7 +31,7 @@ export const useFetchCountries = () => {
 
 export const useFetchCountry = () => {
   const { cca3 } = useParams<string>();
-  const [country, setCountry] = useState<ICountry>();
+  const [fetchedCountry, setFetchedCountry] = useState<ICountry>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,7 +39,7 @@ export const useFetchCountry = () => {
     const fetchCountry = async () => {
       try {
         const response = await axios.get(`${baseURL}/alpha/${cca3}`);
-        setCountry(response.data[0]);
+        setFetchedCountry(response.data[0]);
       } catch (error) {
         setError("Error fetching data");
       } finally {
@@ -52,5 +52,5 @@ export const useFetchCountry = () => {
     }
   }, [cca3]);
 
-  return { country, loading, error };
+  return { fetchedCountry, loading, error };
 };
