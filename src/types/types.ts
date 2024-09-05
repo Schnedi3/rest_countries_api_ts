@@ -96,4 +96,5 @@ export interface CountriesContextType {
   selectedRegion: string;
   setSelectedRegion: (selectedRegion: string) => void;
   uniqueRegions: string[];
+  defaultRegion: string;
 }

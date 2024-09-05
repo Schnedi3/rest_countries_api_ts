@@ -15,7 +15,7 @@ export const Home = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <section className="countrylist">
+    <section className="country_list">
       <Search />
 
       <ul>

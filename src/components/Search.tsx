@@ -15,6 +15,7 @@ export const Search = () => {
     selectedRegion,
     uniqueRegions,
     setSelectedRegion,
+    defaultRegion,
   } = useCountriesContext();
 
   const handleRegionChange = (region: string) => {
@@ -50,7 +51,10 @@ export const Search = () => {
       </article>
       <article className="dropdown">
         <button onClick={toggleModal}>
-          {selectedRegion} <img src={iconBack} />
+          {selectedRegion === defaultRegion
+            ? "Filter by region"
+            : selectedRegion}{" "}
+          <img src={iconBack} />
         </button>
         <ul className={isModalOpen ? "modal_open" : ""}>
           {uniqueRegions.map((region) => (

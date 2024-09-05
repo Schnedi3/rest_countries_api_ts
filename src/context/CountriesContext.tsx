@@ -7,7 +7,7 @@ export const CountriesContext = createContext<CountriesContextType | undefined>(
   undefined
 );
 
-const defaultRegion: string = "All";
+export const defaultRegion: string = "All";
 
 export const CountriesProvider = ({ children }: PropsWithChildren) => {
   const { countries } = useFetchCountries();
@@ -50,6 +50,7 @@ export const CountriesProvider = ({ children }: PropsWithChildren) => {
         selectedRegion,
         setSelectedRegion,
         uniqueRegions,
+        defaultRegion,
       }}
     >
       {children}

@@ -1,9 +1,13 @@
 /* COUNTRIES LIST */
-.countrylist > ul {
+.country_list > ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
   gap: 3rem;
   margin-bottom: 3rem;
+}
+
+.country_list > ul > a {
+  text-decoration: none;
 }
 
 /* LIST */
@@ -72,7 +76,7 @@
 
 /* MOBILE */
 @media (max-width: 700px) {
-  .countrylist > ul {
+  .country_list > ul {
     width: 80%;
     margin: auto;
   }
