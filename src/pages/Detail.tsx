@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-import { useFetchCountry } from "../hooks/useFetch";
+import { useFetchCountry, useFetchBorders } from "../hooks/useFetch";
 import { DetailSkeleton } from "../skeletons/Detailskeleton";
 import { iconBack } from "../UIIcons";
 
@@ -10,11 +10,17 @@ export const Detail = () => {
   const { fetchedCountry, loading, error } = useFetchCountry();
   const navigate = useNavigate();
 
+  const bordersArray = fetchedCountry?.borders || [];
+  const {
+    fetchedBorders,
+    loading: bordersLoading,
+    error: bordersError,
+  } = useFetchBorders(bordersArray);
+
   if (loading) return <DetailSkeleton />;
   if (error) return <p>{error}</p>;
   if (!fetchedCountry) return <DetailSkeleton />;
 
-  // destruture the country properties
   const {
     flags,
     name,
@@ -89,20 +95,26 @@ export const Detail = () => {
             </article>
           </section>
 
-          {borders && (
+          {borders && borders.length > 0 && (
             <div>
               <p>Border Countries:</p>
-              <ul>
-                {borders.map((border, index) => (
-                  <Link
-                    to={`/country/${border}`}
-                    key={index}
-                    className="border"
-                  >
-                    <li>{border}</li>
-                  </Link>
-                ))}
-              </ul>
+              {bordersLoading ? (
+                <p>Loading border countries...</p>
+              ) : bordersError ? (
+                <p>{bordersError}</p>
+              ) : (
+                <ul>
+                  {fetchedBorders.map((borderCountry, index) => (
+                    <Link
+                      to={`/country/${borderCountry.cca3}`}
+                      key={index}
+                      className="border"
+                    >
+                      <li>{borderCountry.name.common}</li>
+                    </Link>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
         </aside>

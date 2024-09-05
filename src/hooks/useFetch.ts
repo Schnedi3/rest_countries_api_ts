@@ -54,3 +54,30 @@ export const useFetchCountry = () => {
 
   return { fetchedCountry, loading, error };
 };
+
+export const useFetchBorders = (borders: string[]) => {
+  const [fetchedBorders, setFetchedBorders] = useState<ICountry[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchBorders = async () => {
+      try {
+        const response = await axios.get(
+          `${baseURL}/alpha?codes=${borders.join(",")}`
+        );
+        setFetchedBorders(response.data);
+      } catch (error) {
+        setError("Error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (borders.length > 0) {
+      fetchBorders();
+    }
+  }, [borders]);
+
+  return { fetchedBorders, loading, error };
+};
