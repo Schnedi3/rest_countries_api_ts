@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useFetchCountry } from "../hooks/useFetch";
 import { DetailSkeleton } from "../skeletons/Detailskeleton";
@@ -8,6 +8,7 @@ import "../css/detail.css";
 
 export const Detail = () => {
   const { fetchedCountry, loading, error } = useFetchCountry();
+  const navigate = useNavigate();
 
   if (loading) return <DetailSkeleton />;
   if (error) return <p>{error}</p>;
@@ -29,12 +30,10 @@ export const Detail = () => {
 
   return (
     <section className="country_detail">
-      <Link to={"/"}>
-        <button>
-          <img src={iconBack} alt="back to homepage" />
-          Back
-        </button>
-      </Link>
+      <button onClick={() => navigate(-1)}>
+        <img src={iconBack} alt="back to homepage" />
+        Back
+      </button>
       <article>
         <img src={flags.svg} alt={`${name.common} flag`} />
 

@@ -7,7 +7,7 @@
 }
 
 /* BUTTON */
-.country_detail > a > button {
+.country_detail > button {
   width: 8rem;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
   box-shadow: 0 2px 0 0 var(--shadow);
 }
 
-.country_detail > a > button > img {
+.country_detail > button > img {
   width: 2rem;
   filter: var(--filter);
 }
@@ -99,7 +99,7 @@
 
 /* HOVER */
 @media (hover: hover) {
-  .country_detail > a > button:hover,
+  .country_detail > button:hover,
   .border:hover {
     box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
