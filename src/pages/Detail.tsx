@@ -1,55 +1,17 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useCountriesContext } from "../context/useCountriesContext";
+import { useFetchCountry } from "../hooks/useFetch";
+import { DetailSkeleton } from "../skeletons/Detailskeleton";
 import { iconBack } from "../UIIcons";
+
 import "../css/detail.css";
 
-import { DetailSkeleton } from "../skeletons/Detailskeleton";
-
 export const Detail = () => {
-  const { countries, selectedCountry, setSelectedCountry } =
-    useCountriesContext();
+  const { country, loading, error } = useFetchCountry();
 
-  // navigate to home
-  const navigate = useNavigate();
-  const handleReturn = () => {
-    navigate("/");
-  };
-
-  // border countries navigation
-  const handleGoTo = (border: string) => {
-    const foundCountry = countries.find((country) => country.cca3 === border);
-
-    if (foundCountry) {
-      setSelectedCountry(foundCountry);
-      navigate(`/country/${border}`);
-    }
-  };
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (selectedCountry) {
-      localStorage.setItem("selectedCountry", JSON.stringify(selectedCountry));
-      setIsLoading(false);
-    }
-  }, [selectedCountry]);
-
-  useEffect(() => {
-    const savedCountry = localStorage.getItem("selectedCountry");
-    if (savedCountry) {
-      setSelectedCountry(JSON.parse(savedCountry));
-    }
-  }, [setSelectedCountry]);
-
-  if (isLoading) {
-    return <DetailSkeleton />;
-  }
-
-  if (!selectedCountry) {
-    return <DetailSkeleton />;
-  }
+  if (loading) return <DetailSkeleton />;
+  if (error) return <p>{error}</p>;
+  if (!country) return <DetailSkeleton />;
 
   // destruture the country properties
   const {
@@ -63,14 +25,16 @@ export const Detail = () => {
     currencies,
     languages,
     borders,
-  } = selectedCountry;
+  } = country;
 
   return (
-    <section className="countrydetail">
-      <button onClick={handleReturn}>
-        <img src={iconBack} alt="back to homepage" />
-        Back
-      </button>
+    <section className="country_detail">
+      <Link to={"/"}>
+        <button>
+          <img src={iconBack} alt="back to homepage" />
+          Back
+        </button>
+      </Link>
       <article>
         <img src={flags.svg} alt={`${name.common} flag`} />
 
@@ -119,11 +83,7 @@ export const Detail = () => {
               <p>Border Countries:</p>
               <ul>
                 {borders.map((border, index) => (
-                  <li
-                    className="border"
-                    key={index}
-                    onClick={() => handleGoTo(border)}
-                  >
+                  <li className="border" key={index}>
                     {border}
                   </li>
                 ))}

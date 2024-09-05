@@ -1,17 +1,34 @@
+import { useEffect, useState } from "react";
+
 import { useCountriesContext } from "../context/useCountriesContext";
 import { iconBack, iconClear, iconSearch } from "../UIIcons";
 import "../css/search.css";
 
 export const Search = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+  const closeModal = () => setIsModalOpen(false);
+
   const {
     searchInput,
     setSearchInput,
-    isModalOpen,
-    toggleModal,
     selectedRegion,
     uniqueRegions,
-    handleRegionChange,
+    setSelectedRegion,
   } = useCountriesContext();
+
+  const handleRegionChange = (region: string) => {
+    setSelectedRegion(region);
+    closeModal();
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", closeModal);
+
+    return () => {
+      window.removeEventListener("resize", closeModal);
+    };
+  }, []);
 
   return (
     <section className="search_filter">

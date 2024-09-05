@@ -1,12 +1,7 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, PropsWithChildren, useMemo, useState } from "react";
 
-import { CountriesContextType, ICountry } from "../types/types";
+import { CountriesContextType } from "../types/types";
+import { useFetchCountries } from "../hooks/useFetch";
 
 export const CountriesContext = createContext<CountriesContextType | undefined>(
   undefined
@@ -15,20 +10,10 @@ export const CountriesContext = createContext<CountriesContextType | undefined>(
 const defaultRegion: string = "All";
 
 export const CountriesProvider = ({ children }: PropsWithChildren) => {
-  const [countries, setCountries] = useState<ICountry[]>([]);
-
-  // country state
-  const [selectedCountry, setSelectedCountry] = useState<
-    ICountry | undefined
-  >();
+  const { countries } = useFetchCountries();
 
   // search state
   const [searchInput, setSearchInput] = useState<string>("");
-
-  // modal state
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
-  const closeModal = () => setIsModalOpen(false);
 
   // categories state
   const [selectedRegion, setSelectedRegion] = useState<string>(defaultRegion);
@@ -37,11 +22,6 @@ export const CountriesProvider = ({ children }: PropsWithChildren) => {
     defaultRegion,
     ...new Set(countries.map((country) => country.region)),
   ];
-
-  const handleRegionChange = (region: string) => {
-    setSelectedRegion(region);
-    closeModal();
-  };
 
   const filteredCountries = useMemo(() => {
     let filtered = countries;
@@ -61,29 +41,15 @@ export const CountriesProvider = ({ children }: PropsWithChildren) => {
     return filtered;
   }, [selectedRegion, countries, searchInput]);
 
-  useEffect(() => {
-    window.addEventListener("resize", closeModal);
-
-    return () => {
-      window.removeEventListener("resize", closeModal);
-    };
-  }, []);
-
   return (
     <CountriesContext.Provider
       value={{
-        countries,
-        setCountries,
-        selectedCountry,
-        setSelectedCountry,
         searchInput,
         setSearchInput,
-        isModalOpen,
-        toggleModal,
         filteredCountries,
         selectedRegion,
+        setSelectedRegion,
         uniqueRegions,
-        handleRegionChange,
       }}
     >
       {children}

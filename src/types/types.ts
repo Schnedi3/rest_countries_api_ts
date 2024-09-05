@@ -90,16 +90,10 @@ export interface ICountry {
 }
 
 export interface CountriesContextType {
-  countries: ICountry[];
-  setCountries: (countries: ICountry[]) => void;
-  selectedCountry: ICountry | undefined;
-  setSelectedCountry: (selectedCountry: ICountry) => void;
   searchInput: string;
   setSearchInput: (searchInput: string) => void;
-  isModalOpen: boolean;
-  toggleModal: () => void;
   filteredCountries: ICountry[];
   selectedRegion: string;
+  setSelectedRegion: (selectedRegion: string) => void;
   uniqueRegions: string[];
-  handleRegionChange: (region: string) => void;
 }
