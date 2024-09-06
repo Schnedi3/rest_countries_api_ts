@@ -89,12 +89,25 @@ export interface ICountry {
   };
 }
 
-export interface CountriesContextType {
-  searchInput: string;
-  setSearchInput: (searchInput: string) => void;
-  filteredCountries: ICountry[];
+export interface ISearchProps {
+  inputValue: string;
+  setInputValue: (inputValue: string) => void;
+}
+
+export interface IRegionProps {
   selectedRegion: string;
   setSelectedRegion: (selectedRegion: string) => void;
-  uniqueRegions: string[];
-  defaultRegion: string;
+  countries: ICountry[];
+}
+
+export interface ICountryCardProps {
+  inputValue: string;
+  selectedRegion: string;
+  countries: ICountry[];
+  loading: boolean;
+  error: string | null | undefined;
+}
+
+export interface IBordersProps {
+  borders: string[];
 }

@@ -1,11 +1,6 @@
 /* SEARCH */
-.search_filter {
-  display: grid;
-  grid-template-columns: 0.6fr 1fr;
-  margin-bottom: 3rem;
-}
-
 .search {
+  width: 30rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -41,79 +36,15 @@
 }
 
 .clear_icon {
-  display: block;
+  display: none;
   position: absolute;
   right: 1rem;
   width: 1.2rem;
   filter: var(--filter);
 }
 
-.clear_icon-hidden {
-  display: none;
-}
-
-/* FILTER */
-.dropdown {
-  position: relative;
-  justify-self: end;
-}
-
-.dropdown > button {
-  width: 11rem;
-  padding: 1rem;
-  border: 0;
-  border-radius: 0.4rem;
-  font-family: Poppins;
-  font-size: 0.9rem;
-  color: var(--dark-text);
-  background-color: var(--clear-bg);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 0.3rem;
-  box-shadow: 0 2px 0 0 var(--shadow);
-}
-
-.dropdown > button > img {
-  width: 1.5rem;
-  filter: var(--filter);
-  transform: rotate(-90deg);
-}
-
-.dropdown > ul {
-  width: 100%;
-  position: absolute;
-  top: 4rem;
-  display: flex;
-  flex-direction: column;
-  clip-path: inset(0 0 100% 0);
-  transition: 0.3s;
-}
-
-.dropdown > ul.modal_open {
-  clip-path: inset(0 0 0 0);
-}
-
-.dropdown > ul > li {
-  list-style-type: none;
-  padding: 0.5rem 2rem;
-  font-size: 0.8rem;
-  color: var(--clear-text);
-  background-color: var(--clear-bg);
-  transition: 0.3s;
-}
-
-.dropdown > ul > li:first-child {
-  border-radius: 0.4rem 0.4rem 0 0;
-}
-
-.dropdown > ul > li:last-child {
-  border-radius: 0 0 0.4rem 0.4rem;
-}
-
-.dropdown > ul > li.active {
-  color: var(--accent);
-  font-weight: 700;
+.clear_icon-show {
+  display: block;
 }
 
 /* HOVER */
@@ -124,28 +55,5 @@
 
   .clear_icon:hover {
     cursor: pointer;
-  }
-
-  .dropdown > button:hover {
-    cursor: pointer;
-    box-shadow: 0 2px 0 0 var(--accent);
-  }
-
-  .dropdown > ul > li:hover {
-    color: var(--dark-text);
-    background-color: var(--accent-pale);
-    cursor: pointer;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 700px) {
-  .search_filter {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .dropdown {
-    justify-self: start;
   }
 }

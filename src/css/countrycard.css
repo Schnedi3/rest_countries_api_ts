@@ -1,0 +1,87 @@
+/* COUNTRIES LIST */
+.country_list > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* LIST */
+.country {
+  list-style-type: none;
+  display: grid;
+  transition: 0.2s;
+  animation: fade-In 1.5s;
+}
+
+.country > a {
+  text-decoration: none;
+}
+
+.country > a > figure {
+  width: 100%;
+  height: 10rem;
+  overflow: hidden;
+}
+
+.country > a > figure > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+  transition: 0.3s;
+}
+
+.country_info {
+  height: 10rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--clear-bg);
+  border-radius: 0 0 0.5rem 0.5rem;
+  box-shadow: 0 2px 0 0 var(--shadow);
+}
+
+.country_info > h3 {
+  margin-bottom: 0.5rem;
+  font-family: Montserrat;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--dark-text);
+  letter-spacing: 0.5px;
+}
+
+.country_info > p {
+  font-size: 0.85rem;
+  color: var(--clear-text);
+}
+
+.country_info > p > span {
+  font-weight: 500;
+  color: var(--dark-text);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .country:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+  .country > a:hover > .country_info {
+    box-shadow: 0 2px 0 0 var(--accent);
+  }
+}
+
+/* ANIMATION */
+@keyframes fade-In {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

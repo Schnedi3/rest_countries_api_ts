@@ -1,0 +1,43 @@
+/* BORDERS */
+.borders_container {
+  display: flex;
+}
+
+.borders_container > p {
+  font-weight: 600;
+  color: var(--dark-text);
+}
+
+.borders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.borders > a {
+  color: var(--clear-text);
+  text-decoration: none;
+}
+
+.borders > a > li {
+  list-style-type: none;
+  padding: 0 0.7rem;
+  border-radius: 0.2rem;
+  background-color: var(--clear-bg);
+  box-shadow: 0 2px 0 0 var(--shadow);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .borders > a > li:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
+    cursor: pointer;
+  }
+}
+
+/* MOBILE */
+@media (max-height: 800px) {
+  .borders_container {
+    gap: 1rem;
+  }
+}

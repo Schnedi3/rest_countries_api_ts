@@ -1,0 +1,77 @@
+/* region */
+.region {
+  position: relative;
+  justify-self: end;
+}
+
+.region > button {
+  width: 11rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  font-family: Poppins;
+  font-size: 0.9rem;
+  color: var(--dark-text);
+  background-color: var(--clear-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.3rem;
+  box-shadow: 0 2px 0 0 var(--shadow);
+}
+
+.region > button > img {
+  width: 1.5rem;
+  filter: var(--filter);
+  transform: rotate(-90deg);
+}
+
+.region > ul {
+  width: 100%;
+  position: absolute;
+  top: 4rem;
+  display: flex;
+  flex-direction: column;
+  clip-path: inset(0 0 100% 0);
+  transition: 0.3s;
+}
+
+.region > ul.modal_open {
+  clip-path: inset(0 0 0 0);
+}
+
+.region > ul > li {
+  list-style-type: none;
+  padding: 0.5rem 2rem;
+  font-size: 0.8rem;
+  color: var(--clear-text);
+  background-color: var(--clear-bg);
+  transition: 0.3s;
+}
+
+.region > ul > li:first-child {
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+
+.region > ul > li:last-child {
+  border-radius: 0 0 0.4rem 0.4rem;
+}
+
+.region > ul > li.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .region > button:hover {
+    cursor: pointer;
+    box-shadow: 0 2px 0 0 var(--accent);
+  }
+
+  .region > ul > li:hover {
+    color: var(--dark-text);
+    background-color: var(--accent-pale);
+    cursor: pointer;
+  }
+}

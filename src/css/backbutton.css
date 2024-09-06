@@ -1,0 +1,29 @@
+/* BUTTON */
+.back > button {
+  width: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-text);
+  font-family: Raleway;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.3rem 3rem 0.3rem 1.5rem;
+  border: 0;
+  border-radius: 0.3rem;
+  background-color: var(--clear-bg);
+  box-shadow: 0 2px 0 0 var(--shadow);
+}
+
+.back > button > img {
+  width: 2rem;
+  filter: var(--filter);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .back > button:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
+    cursor: pointer;
+  }
+}

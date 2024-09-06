@@ -1,4 +1,3 @@
-import { iconBack } from "../UIIcons";
 import "./detail_skeleton.css";
 
 export const DetailSkeleton = () => {
@@ -6,10 +5,6 @@ export const DetailSkeleton = () => {
 
   return (
     <section className="detail_skeleton">
-      <button>
-        <img src={iconBack} />
-        Back
-      </button>
       <article>
         <img />
 

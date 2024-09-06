@@ -1,50 +1,39 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
-import { useCountriesContext } from "../context/useCountriesContext";
-import { useFetchCountries } from "../hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 import { Search } from "../components/Search";
-import { HomeSkeleton } from "../skeletons/HomeSkeleton";
+import { Region } from "../components/Region";
+import { CountryCard } from "../components/CountryCard";
 
 import "../css/home.css";
 
-export const Home = () => {
-  const { loading, error } = useFetchCountries();
-  const { filteredCountries } = useCountriesContext();
+export const defaultRegion: string = "All";
 
-  if (loading) return <HomeSkeleton />;
-  if (error) return <p>{error}</p>;
+export const Home = () => {
+  const { data: countries, loading, error } = useFetch("all");
+
+  const [inputValue, setInputValue] = useState<string>("");
+  const [selectedRegion, setSelectedRegion] = useState<string>(defaultRegion);
 
   return (
-    <section className="country_list">
-      <Search />
+    <section className="home">
+      <section>
+        <Search inputValue={inputValue} setInputValue={setInputValue} />
+        <Region
+          selectedRegion={selectedRegion}
+          setSelectedRegion={setSelectedRegion}
+          countries={countries}
+        />
+      </section>
 
       <ul>
-        {filteredCountries.map((country, index) => (
-          <li className="country" key={index}>
-            <Link to={`/country/${country.cca3}`}>
-              <figure>
-                <img
-                  src={country.flags.svg}
-                  alt={`${country.name.common} flag`}
-                />
-              </figure>
-              <div className="country_info">
-                <h3>{country.name.common}</h3>
-                <p>
-                  <span>Population:</span> {country.population.toLocaleString()}
-                </p>
-                <p>
-                  <span>Region:</span> {country.region}
-                </p>
-                {country.capital && (
-                  <p>
-                    <span>Capital:</span> {country.capital}
-                  </p>
-                )}
-              </div>
-            </Link>
-          </li>
-        ))}
+        <CountryCard
+          inputValue={inputValue}
+          selectedRegion={selectedRegion}
+          countries={countries}
+          loading={loading}
+          error={error}
+        />
       </ul>
     </section>
   );
